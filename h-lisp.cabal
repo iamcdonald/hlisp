@@ -1,0 +1,34 @@
+cabal-version:      3.0
+name:               h-lisp
+version:            0.1.0.0
+license:            MIT
+author:             Iain McDonald
+maintainer:         iain.allan.mcdonald@protonmail.com
+category:           Testing
+build-type:         Simple
+
+common warnings
+    ghc-options: -Wall
+
+library hlisp
+    exposed-modules:
+    ghc-options: -Wall
+    build-depends:
+        base >=4.7 && <5
+      , containers
+    hs-source-dirs:   src
+    default-language: GHC2021
+
+test-suite test
+  type: exitcode-stdio-1.0
+  main-is: TestRunner.hs
+  other-modules:
+  hs-source-dirs:
+      test
+  ghc-options: -Wall
+  build-depends:
+      base >=4.7 && <5
+    , tasty
+    , tasty-hunit
+    , hlisp
+  default-language: GHC2021
