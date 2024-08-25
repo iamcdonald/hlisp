@@ -4,14 +4,13 @@ version:            0.1.0.0
 license:            MIT
 author:             Iain McDonald
 maintainer:         iain.allan.mcdonald@protonmail.com
-category:           Testing
 build-type:         Simple
 
 common warnings
     ghc-options: -Wall
 
 library hlisp
-    exposed-modules:
+    exposed-modules: Types, Parser
     ghc-options: -Wall
     build-depends:
         base >=4.7 && <5
@@ -22,7 +21,7 @@ library hlisp
 test-suite test
   type: exitcode-stdio-1.0
   main-is: TestRunner.hs
-  other-modules:
+  other-modules: ParserTest
   hs-source-dirs:
       test
   ghc-options: -Wall
