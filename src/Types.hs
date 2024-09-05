@@ -24,5 +24,3 @@ data LispOp = LispOp
     fn :: [LispExpr] -> LispExpr,
     usage :: String
   }
-
-data LispResult = LispResult {result :: LispExpr, exceptions :: [LispEvaluatorException]} deriving (Show, Eq)
