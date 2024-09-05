@@ -15,7 +15,7 @@ instance Show LispExpr where
   show (LispList x) = "<" ++ unwords (map show x) ++ ">"
   show (LispNothing) = "null"
 
-data LispParseException = IncompleteExpression String | UnmatchedDelimiter String deriving (Show, Eq)
+data LispParserException = IncompleteExpression String | UnmatchedDelimiter String deriving (Show, Eq)
 
 data LispEvaluatorException = UnsupportedOperator String | UnsupportedOperatorUse String deriving (Show, Eq)
 

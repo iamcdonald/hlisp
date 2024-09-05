@@ -4,7 +4,7 @@ import Data.Either
 import Parser (parse)
 import Test.Tasty (TestTree, testGroup)
 import Test.Tasty.HUnit
-import Types (LispExpr (..), LispParseException (..))
+import Types (LispExpr (..), LispParserException (..))
 
 suite :: TestTree
 suite =

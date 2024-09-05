@@ -2,7 +2,7 @@ module Parser (parse) where
 
 import Control.Applicative
 import Text.Read (readMaybe)
-import Types (LispExpr (..), LispParseException (..))
+import Types (LispExpr (..), LispParserException (..))
 
 splitOn :: [Char] -> String -> (String, String)
 splitOn c = splt ""
@@ -28,7 +28,7 @@ hasMatchedDelimiters s = validate 0 s == (0 :: Integer)
       | x == ')' = validate (i - 1) xs
       | otherwise = validate i xs
 
-validateExpression :: String -> Maybe LispParseException
+validateExpression :: String -> Maybe LispParserException
 validateExpression expr =
   case (begins, ends, matchedDelimiters) of
     (False, _, _) -> Just $ IncompleteExpression "Does not begin with '('"
@@ -77,7 +77,7 @@ parseList expr = LispList $ _parse [] expr
           let (f, s) = splitOn " " (x : xs)
           _parse (agg ++ [parseValue f]) s
 
-parse :: String -> Either LispExpr LispParseException
+parse :: String -> Either LispExpr LispParserException
 parse expr = case validation of
   Just err -> Right err
   Nothing -> Left $ parseList $ tail $ init expr
