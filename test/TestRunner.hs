@@ -1,5 +1,6 @@
 module Main where
 
+import EvaluatorTest
 import ParserTest
 import Test.Tasty (TestTree, defaultMain, testGroup)
 
@@ -10,5 +11,6 @@ tests :: TestTree
 tests =
   testGroup
     "h-lisp"
-    [ ParserTest.suite
+    [ ParserTest.suite,
+      EvaluatorTest.suite
     ]

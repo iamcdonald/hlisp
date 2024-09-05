@@ -10,7 +10,7 @@ common warnings
     ghc-options: -Wall
 
 library hlisp
-    exposed-modules: Types, Parser
+    exposed-modules: Types, Parser, Evaluator
     ghc-options: -Wall
     build-depends:
         base >=4.7 && <5
@@ -21,7 +21,7 @@ library hlisp
 test-suite test
   type: exitcode-stdio-1.0
   main-is: TestRunner.hs
-  other-modules: ParserTest
+  other-modules: ParserTest, EvaluatorTest
   hs-source-dirs:
       test
   ghc-options: -Wall

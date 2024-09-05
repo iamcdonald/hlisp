@@ -5,6 +5,7 @@ data LispExpr
   | LispSymbol String
   | LispInteger Integer
   | LispString String
+  | LispNothing
   deriving (Eq)
 
 instance Show LispExpr where
@@ -12,5 +13,16 @@ instance Show LispExpr where
   show (LispString s) = ['"'] ++ s ++ ['"']
   show (LispSymbol s) = s
   show (LispList x) = "<" ++ unwords (map show x) ++ ">"
+  show (LispNothing) = "null"
 
 data LispParseException = IncompleteExpression String | UnmatchedDelimiter String deriving (Show, Eq)
+
+data LispEvaluatorException = UnsupportedOperator String | UnsupportedOperatorUse String deriving (Show, Eq)
+
+data LispOp = LispOp
+  { op :: String,
+    fn :: [LispExpr] -> LispExpr,
+    usage :: String
+  }
+
+data LispResult = LispResult {result :: LispExpr, exceptions :: [LispEvaluatorException]} deriving (Show, Eq)
